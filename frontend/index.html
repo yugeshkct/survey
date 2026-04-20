@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Survey Platform</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="container">
+    <h1>Survey Creation Platform</h1>
+
+    <form id="surveyForm">
+      <label>Survey Name</label>
+      <input type="text" id="surveyName" placeholder="Enter survey name" required />
+
+      <label>Page Name</label>
+      <input type="text" id="pageName" placeholder="Enter page name" required />
+
+      <div id="questionsContainer"></div>
+
+      <button type="button" id="addQuestionBtn">Add Question</button>
+      <button type="submit">Create Survey</button>
+    </form>
+
+    <div id="responseBox" class="hidden">
+      <h3>Survey Created</h3>
+      <p id="responseMessage"></p>
+      <a id="surveyLink" href="#" target="_blank"></a>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
