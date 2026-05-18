@@ -8,13 +8,6 @@ pipeline {
 
     stages {
 
-        stage('Checkout') {
-            steps {
-                git branch: 'main',
-                url: 'https://github.com/yugeshkct/survey_second.git'
-            }
-        }
-
         stage('Build Images') {
             steps {
                 sh 'docker build -t $DOCKER_USER/survey-backend:latest ./backend'
@@ -22,7 +15,7 @@ pipeline {
             }
         }
 
-        stage('Push Images to Docker Hub') {
+        stage('Push Images') {
             steps {
                 withCredentials([usernamePassword(
                     credentialsId: "$DOCKER_CREDS",
