@@ -7,9 +7,11 @@ pipeline {
     }
 
     stages {
+
         stage('Checkout') {
             steps {
-                git branch: 'main', url: 'https://github.com/YOUR_USERNAME/YOUR_REPO.git'
+                git branch: 'main',
+                url: 'https://github.com/yugeshkct/survey_second.git'
             }
         }
 
@@ -27,21 +29,20 @@ pipeline {
                     usernameVariable: 'DOCKERHUB_USERNAME',
                     passwordVariable: 'DOCKERHUB_PASSWORD'
                 )]) {
+
                     sh 'echo $DOCKERHUB_PASSWORD | docker login -u $DOCKERHUB_USERNAME --password-stdin'
+
                     sh 'docker push $DOCKER_USER/survey-backend:latest'
                     sh 'docker push $DOCKER_USER/survey-frontend:latest'
                 }
             }
         }
 
-        stage('Deploy on EC2') {
+        stage('Deploy') {
             steps {
                 sh '''
-                docker pull $DOCKER_USER/survey-backend:latest
-                docker pull $DOCKER_USER/survey-frontend:latest
                 docker compose down || true
                 docker compose up -d
-                docker ps
                 '''
             }
         }
