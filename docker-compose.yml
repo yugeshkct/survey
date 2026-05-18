@@ -1,0 +1,18 @@
+services:
+  backend:
+    image: syugesh/survey-backend:latest
+    container_name: survey-backend
+    ports:
+      - "5000:5000"
+    env_file:
+      - ./backend/.env
+    restart: always
+
+  frontend:
+    image: syugesh/survey-frontend:latest
+    container_name: survey-frontend
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
+    restart: always

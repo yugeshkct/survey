@@ -6,7 +6,7 @@ const responseMessage = document.getElementById("responseMessage");
 const surveyLink = document.getElementById("surveyLink");
 
 // Change this to your backend VM IP
-const BACKEND_URL = "http://192.168.0.3:5000/api/create-survey";
+const BACKEND_URL = "http://204.236.220.8:5000/api/create-survey";
 
 let questionCount = 0;
 
