@@ -23,7 +23,7 @@ pipeline {
                     passwordVariable: 'DOCKERHUB_PASSWORD'
                 )]) {
 
-                    sh 'docker login -u $DOCKERHUB_USERNAME --password-stdin'
+                    sh 'echo $DOCKERHUB_PASSWORD | docker login -u $DOCKERHUB_USERNAME --password-stdin'
 		    sh 'docker push $DOCKER_USER/survey-backend:latest'
                     sh 'docker push $DOCKER_USER/survey-frontend:latest'
                 }
