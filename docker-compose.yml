@@ -12,7 +12,7 @@ services:
     image: syugesh/survey-frontend:latest
     container_name: survey-frontend
     ports:
-      - "80:80"
+      - "82:82"
     depends_on:
       - backend
     restart: always  #TESTING 
